@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.6.0, created on 2025-11-22 02:55:13
+/* Smarty version 5.6.0, created on 2025-11-24 13:55:56
   from 'file:menu.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.6.0',
-  'unifunc' => 'content_6921261115bac2_47920904',
+  'unifunc' => 'content_692463ec1275e9_72161271',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd0ebf208fe57873377b70d995de803644ed291d' => 
     array (
       0 => 'menu.tpl',
-      1 => 1763648248,
+      1 => 1763848212,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,20 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_6921261115bac2_47920904 (\Smarty\Template $_smarty_tpl) {
+function content_692463ec1275e9_72161271 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_585784380692126111571c9_43404675', "contenido");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1019429262692463ec1226f5_45247450', "contenido");
 ?>
 
 <?php $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layout.tpl", $_smarty_current_dir);
 }
 /* {block "contenido"} */
-class Block_585784380692126111571c9_43404675 extends \Smarty\Runtime\Block
+class Block_1019429262692463ec1226f5_45247450 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';
@@ -59,7 +59,7 @@ $_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';
             <div class="card-body">
                 <i class="bi bi-people display-4 text-info"></i>
                 <h5 class="card-title mt-3">Alumnos</h5>
-                <a href="alumno.php" class="btn btn-outline-info w-100 mt-3">Entrar</a>
+                <a href="alumnos.php" class="btn btn-outline-info w-100 mt-3">Entrar</a>
             </div>
         </div>
     </div>

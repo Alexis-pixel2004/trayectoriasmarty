@@ -21,7 +21,7 @@
             <div class="card-body">
                 <i class="bi bi-people display-4 text-info"></i>
                 <h5 class="card-title mt-3">Alumnos</h5>
-                <a href="alumno.php" class="btn btn-outline-info w-100 mt-3">Entrar</a>
+                <a href="alumnos.php" class="btn btn-outline-info w-100 mt-3">Entrar</a>
             </div>
         </div>
     </div>

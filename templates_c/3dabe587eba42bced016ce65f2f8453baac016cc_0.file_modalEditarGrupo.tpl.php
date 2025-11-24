@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.6.0, created on 2025-11-22 02:55:20
+/* Smarty version 5.6.0, created on 2025-11-24 14:06:53
   from 'file:modalEditarGrupo.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.6.0',
-  'unifunc' => 'content_69212618024b94_44118540',
+  'unifunc' => 'content_6924667dd52818_78489037',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_69212618024b94_44118540 (\Smarty\Template $_smarty_tpl) {
+function content_6924667dd52818_78489037 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';
 ?><div class="modal fade" id="modalEditarGrupo" tabindex="-1">
   <div class="modal-dialog">

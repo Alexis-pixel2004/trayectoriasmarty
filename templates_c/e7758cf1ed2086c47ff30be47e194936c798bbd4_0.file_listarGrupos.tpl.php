@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.6.0, created on 2025-11-22 02:55:19
+/* Smarty version 5.6.0, created on 2025-11-24 14:06:53
   from 'file:listarGrupos.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.6.0',
-  'unifunc' => 'content_69212617de91d0_64170255',
+  'unifunc' => 'content_6924667db74b44_17020717',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -21,18 +21,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:modalEditarGrupo.tpl' => 1,
   ),
 ))) {
-function content_69212617de91d0_64170255 (\Smarty\Template $_smarty_tpl) {
+function content_6924667db74b44_17020717 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_199343728869212617d88674_42636185', "contenido");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_10547244756924667dad8f23_28494120', "contenido");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layout.tpl", $_smarty_current_dir);
 }
 /* {block "contenido"} */
-class Block_199343728869212617d88674_42636185 extends \Smarty\Runtime\Block
+class Block_10547244756924667dad8f23_28494120 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';

@@ -324,3 +324,234 @@ $(document).on("click", ".eliminar-grupo", function () {
   }
 });
 
+
+//Validaciones para insercion de los alumnos 
+function validarCamposAlumno() {
+  console.log("Ejecutando validación de alumno...");
+
+  // Nombre
+  if ($("#Nombre").val().trim() === "") {
+    $("#Nombre").css("background-color", "red").focus();
+    return false;
+  }
+
+  // Apellido
+  if ($("#Apellido").val().trim() === "") {
+    $("#Apellido").css("background-color", "red").focus();
+    return false;
+  }
+
+  // Sexo
+  const sexo = $("#Sexo").val();
+  if (sexo !== "M" && sexo !== "F") {
+    alert("Selecciona el sexo del alumno.");
+    $("#Sexo").css("background-color", "red").focus();
+    return false;
+  }
+
+  // Fecha de nacimiento
+  const fecha = $("#FechaNacimiento").val();
+  if (!fecha) {
+    $("#FechaNacimiento").css("background-color", "red").focus();
+    return false;
+  }
+
+  // CURP
+  const curp = $("#CURP").val().trim().toUpperCase();
+  const regexCURP = /^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/;
+  if (!regexCURP.test(curp)) {
+    alert("CURP inválido. Verifica el formato.");
+    $("#CURP").css("background-color", "red").focus();
+    return false;
+  }
+
+  // Grupo
+  if ($("#IdGrupo").val() === "") {
+    $("#IdGrupo").css("background-color", "red").focus();
+    return false;
+  }
+
+  return true;
+}
+
+$(document).ready(function () {
+  // Envío del formulario
+  $(document).on("submit", "#form_registro_alumno", function (e) {
+    e.preventDefault();
+
+    if (!validarCamposAlumno()) return false;
+
+    const datos = $(this).serialize();
+    console.log("Datos enviados:", datos);
+
+    $.ajax({
+      type: "POST",
+      url: "../controladores/insertar_alumno.php",
+      data: datos,
+      xhrFields: { withCredentials: true },
+      success: function (respuesta) {
+        console.log("Respuesta completa:", respuesta);
+        alert("Alumno registrado correctamente");
+        $("#form_registro_alumno")[0].reset();
+      },
+      error: function () {
+        alert("Error al registrar alumno");
+      }
+    });
+  });
+
+  // Limpieza visual al escribir o cambiar
+  $("#Nombre, #Apellido, #CURP, #FechaNacimiento").on("input", function () {
+    $(this).css("background-color", "");
+  });
+
+  $("#Sexo, #IdGrupo").on("change", function () {
+    $(this).css("background-color", "");
+  });
+});
+
+
+
+
+// Validaciones para la edición de los alumnos
+function validarCamposEditarAlumno() {
+  console.log("Ejecutando validación de edición...");
+
+  if ($("#editNombre").val().trim() === "") {
+    $("#editNombre").css("background-color", "red").focus();
+    return false;
+  }
+  if ($("#editApellido").val().trim() === "") {
+    $("#editApellido").css("background-color", "red").focus();
+    return false;
+  }
+  const sexo = $("#editSexo").val();
+  if (sexo !== "M" && sexo !== "F") {
+    alert("Selecciona el sexo del alumno.");
+    $("#editSexo").css("background-color", "red").focus();
+    return false;
+  }
+  const fecha = $("#editFecha").val();
+  if (!fecha) {
+    $("#editFecha").css("background-color", "red").focus();
+    return false;
+  }
+  const curp = $("#editCURP").val().trim().toUpperCase();
+  const regexCURP = /^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}$/;
+  if (!regexCURP.test(curp)) {
+    alert("CURP inválido. Verifica el formato.");
+    $("#editCURP").css("background-color", "red").focus();
+    return false;
+  }
+  return true;
+}
+
+$(document).ready(function () {
+  // Cargar alumnos por grupo
+  $("#btnCargarGrupo").on("click", function () {
+    const idGrupo = $("#grupoSeleccionado").val();
+    if (!idGrupo) {
+      $("#tablaAlumnos tbody").html("");
+      return;
+    }
+    $("#tablaAlumnos tbody").html('<tr><td colspan="6" class="text-center">Cargando...</td></tr>');
+    $.ajax({
+      type: "POST",
+      url: "../controladores/listar_alumnos.php",
+      data: { IdGrupo: idGrupo },
+      dataType: "json",
+      success: function (alumnos) {
+        let filas = "";
+        alumnos.forEach(a => {
+          filas += `
+            <tr>
+              <td>${a.Nombre}</td>
+              <td>${a.Apellido}</td>
+              <td>${a.Sexo}</td>
+              <td>${a.FechaNacimiento}</td>
+              <td>${a.CURP}</td>
+              <td>
+                <button class="btn btn-sm btn-warning editar-alumno"
+                  data-id="${a.IdAlumno}"
+                  data-nombre="${a.Nombre}"
+                  data-apellido="${a.Apellido}"
+                  data-sexo="${a.Sexo}"
+                  data-fecha="${a.FechaNacimiento}"
+                  data-curp="${a.CURP}">
+                  Editar
+                </button>
+                <button class="btn btn-sm btn-danger eliminar-alumno" 
+                  data-id="${a.IdAlumno}" data-grupo="${idGrupo}">
+                  Eliminar
+                </button>
+              </td>
+            </tr>`;
+        });
+        $("#tablaAlumnos tbody").html(filas);
+      }
+    });
+  });
+
+  // Eliminar alumno
+  $(document).on("click", ".eliminar-alumno", function () {
+    const idAlumno = $(this).data("id");
+    const idGrupo  = $(this).data("grupo");
+    if (confirm("¿Seguro que deseas eliminar este alumno?")) {
+      $.ajax({
+        type: "POST",
+        url: "../controladores/eliminar_alumno.php",
+        data: { IdAlumno: idAlumno, IdGrupo: idGrupo },
+        success: function (respuesta) {
+          alert(respuesta);
+          $("#btnCargarGrupo").trigger("click");
+        }
+      });
+    }
+  });
+
+  // Abrir modal de edición
+  $(document).on("click", ".editar-alumno", function () {
+    $("#editIdAlumno").val($(this).data("id"));
+    $("#editNombre").val($(this).data("nombre"));
+    $("#editApellido").val($(this).data("apellido"));
+    $("#editSexo").val($(this).data("sexo"));
+    $("#editFecha").val($(this).data("fecha"));
+    $("#editCURP").val($(this).data("curp"));
+    $("#modalEditarAlumno").modal("show");
+  });
+
+  // Enviar edición
+  $(document).on("submit", "#formEditarAlumno", function (e) {
+    e.preventDefault();
+    if (!validarCamposEditarAlumno()) return false;
+    const datos = {
+      IdAlumno: $("#editIdAlumno").val(),
+      Nombre: $("#editNombre").val().trim(),
+      Apellido: $("#editApellido").val().trim(),
+      Sexo: $("#editSexo").val(),
+      FechaNacimiento: $("#editFecha").val(),
+      CURP: $("#editCURP").val().trim().toUpperCase()
+    };
+    $.ajax({
+      type: "POST",
+      url: "../controladores/editar_alumno.php",
+      data: datos,
+      success: function (respuesta) {
+        alert(respuesta.message || respuesta);
+        $("#modalEditarAlumno").modal("hide");
+        $("#btnCargarGrupo").trigger("click");
+      },
+      error: function(xhr){
+        console.error("Ërror: ",xhr.responseText);
+      }
+    });
+  });
+
+  // Limpieza visual
+  $("#editNombre, #editApellido, #editCURP, #editFecha").on("input", function () {
+    $(this).css("background-color", "");
+  });
+  $("#editSexo").on("change", function () {
+    $(this).css("background-color", "");
+  });
+});
