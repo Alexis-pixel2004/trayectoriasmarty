@@ -48,13 +48,13 @@
         </div>
     </div>
 
-    <!-- Actividades -->
+    <!-- Exportar -->
     <div class="col-md-4">
         <div class="card shadow-sm h-100 text-center">
             <div class="card-body">
                 <i class="bi bi-star display-4 text-secondary"></i>
-                <h5 class="card-title mt-3">Actividades</h5>
-                <a href="actividades.php" class="btn btn-outline-secondary w-100 mt-3">Entrar</a>
+                <h5 class="card-title mt-3">Exportar</h5>
+                <a href="exportarAlumnos.php" class="btn btn-outline-secondary w-100 mt-3">Entrar</a>
             </div>
         </div>
     </div>

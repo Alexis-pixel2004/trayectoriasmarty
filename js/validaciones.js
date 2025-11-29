@@ -555,3 +555,39 @@ $(document).ready(function () {
     $(this).css("background-color", "");
   });
 });
+
+
+$(document).ready(function () {
+  $("#grupoExportar").on("change", function () {
+    const idGrupo = $(this).val();
+    console.log("Grupo seleccionado:", idGrupo);
+    $("#btnExportarExcel").prop("disabled", !idGrupo);
+  });
+
+  $("#btnExportarExcel").on("click", function () {
+    const idGrupo = $("#grupoExportar").val();
+    if (idGrupo) {
+      $.ajax({
+        url: "../controladores/exportar_alumnos.php",
+        type: "GET",
+        data: { IdGrupo: idGrupo },
+        xhrFields: { responseType: 'blob' },
+        success: function (data) {
+          const url = window.URL.createObjectURL(data);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "alumnos_grupo" + idGrupo + ".xlsx";
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          window.URL.revokeObjectURL(url);
+          console.log(" Exportación exitosa del grupo " + idGrupo);
+        },
+        error: function (xhr) {
+          console.error(" Error al exportar:", xhr.status, xhr.responseText);
+        }
+      });
+    }
+  });
+});
+
