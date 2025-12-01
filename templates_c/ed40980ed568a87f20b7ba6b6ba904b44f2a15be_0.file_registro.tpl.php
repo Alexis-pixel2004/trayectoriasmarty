@@ -1,11 +1,48 @@
-{extends file="layout.tpl"}
+<?php
+/* Smarty version 5.6.0, created on 2025-11-30 23:20:48
+  from 'file:registro.tpl' */
 
-{block name="contenido"}
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.6.0',
+  'unifunc' => 'content_692cd150520ac3_97110617',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'ed40980ed568a87f20b7ba6b6ba904b44f2a15be' => 
+    array (
+      0 => 'registro.tpl',
+      1 => 1764544845,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_692cd150520ac3_97110617 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';
+$_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
+?>
+
+
+<?php 
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1623620391692cd150500db2_71631493', "contenido");
+$_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layout.tpl", $_smarty_current_dir);
+}
+/* {block "contenido"} */
+class Block_1623620391692cd150500db2_71631493 extends \Smarty\Runtime\Block
+{
+public function callBlock(\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';
+?>
+
 <h2>Registro de Docente</h2>
 
-{if isset($mensaje)}
-  <p>{$mensaje}</p>
-{/if}
+<?php if ((true && ($_smarty_tpl->hasVariable('mensaje') && null !== ($_smarty_tpl->getValue('mensaje') ?? null)))) {?>
+  <p><?php echo $_smarty_tpl->getValue('mensaje');?>
+</p>
+<?php }?>
 
 <div class="container mt-5">
   <div class="row justify-content-center">
@@ -66,4 +103,8 @@
 </div>
 
 
-{/block}
+<?php
+}
+}
+/* {/block "contenido"} */
+}

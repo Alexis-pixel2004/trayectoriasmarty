@@ -45,30 +45,42 @@
         </div>
         <div class="modal-body">
           <input type="hidden" id="editIdAlumno">
+
           <div class="mb-3">
             <label for="editNombre">Nombre</label>
-            <input type="text" id="editNombre" class="form-control" required>
+            <input type="text" id="editNombre" class="form-control">
+            <small id="error-editNombre" class="text-danger d-none"><div class="alert alert-success alert-dismissible fade show" role="alert">Te falta ingresar el nombre.</div></small>
           </div>
+
           <div class="mb-3">
             <label for="editApellido">Apellido</label>
-            <input type="text" id="editApellido" class="form-control" required>
+            <input type="text" id="editApellido" class="form-control">
+            <small id="error-editApellido" class="text-danger d-none"><div class="alert alert-success alert-dismissible fade show" role="alert">Te falta ingresar el apellido.</div></small>
           </div>
+
           <div class="mb-3">
             <label for="editSexo">Sexo</label>
-            <select id="editSexo" class="form-select" required>
+            <select id="editSexo" class="form-select">
+              <option value="">Selecciona</option>
               <option value="M">Masculino</option>
               <option value="F">Femenino</option>
             </select>
+            <small id="error-editSexo" class="text-danger d-none"><div class="alert alert-success alert-dismissible fade show" role="alert">Selecciona el sexo del alumno.</div></small>
           </div>
+
           <div class="mb-3">
             <label for="editFecha">Fecha Nacimiento</label>
-            <input type="date" id="editFecha" class="form-control" required>
+            <input type="date" id="editFecha" class="form-control">
+            <small id="error-editFecha" class="text-danger d-none"><div class="alert alert-success alert-dismissible fade show" role="alert">Debes ingresar la fecha de nacimiento.</div></small>
           </div>
+
           <div class="mb-3">
             <label for="editCURP">CURP</label>
-            <input type="text" id="editCURP" class="form-control" required>
+            <input type="text" id="editCURP" class="form-control">
+            <small id="error-editCURP" class="text-danger d-none"><div class="alert alert-success alert-dismissible fade show" role="alert">CURP inválido. Verifica el formato.</div></small>
           </div>
         </div>
+
         <div class="modal-footer">
           <button type="submit" class="btn btn-success">Guardar cambios</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -77,5 +89,6 @@
     </div>
   </div>
 </div>
+
 
 {/block}
