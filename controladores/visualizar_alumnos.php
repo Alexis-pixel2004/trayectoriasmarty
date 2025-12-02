@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit;
+}
 require_once '../db/conexion.php';
 require_once '../clases/Grupo.php';
 require('../../libs/Smarty.class.php');

@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit;
+}
 require_once '../db/conexion.php';
 require_once '../clases/Grupo.php';
 
@@ -12,10 +16,8 @@ if ($idGrupo && $idDocente) {
     if ($grupoModel->eliminar($idGrupo, $idDocente)) {
         echo "Grupo eliminado correctamente";
     } else {
-        http_response_code(500);
         echo "Error al eliminar el grupo o no tienes permisos";
     }
 } else {
-    http_response_code(400);
     echo "Datos incompletos";
 }

@@ -2,7 +2,7 @@
 session_start();
 require_once '../../libs/Smarty.class.php';
 require_once '../db/conexion.php';
-require_once '../clases/Docente.php'; // corregido
+require_once '../clases/Docente.php'; 
 
 $smarty = new Smarty\Smarty;
 $smarty->setTemplateDir(__DIR__ . '/../templates/');
@@ -37,6 +37,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Solo se muestra el login si no hubo redirección
 $smarty->assign("titulo", "Login");
 $smarty->display("login.tpl");

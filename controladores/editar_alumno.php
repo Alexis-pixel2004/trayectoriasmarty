@@ -1,9 +1,11 @@
 <?php
 session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit;
+}
 require_once '../db/conexion.php';
 require_once '../clases/Alumno.php';
-
-header('Content-Type: application/json; charset=utf-8');
 
 $alumnoModel = new Alumno($conn);
 
@@ -25,14 +27,11 @@ if ($id && $nombre && $apellido && $sexo && $fecha && $curp) {
         'CURP'            => $curp
     ]);
 
-    echo json_encode([
-        "success" => $resultado,
-        "message" => $resultado ? "Alumno actualizado correctamente" : "Error al actualizar"
-    ]);
+    if ($resultado) {
+        echo "Alumno actualizado correctamente";
+    } else {
+        echo "Error al actualizar";
+    }
 } else {
-    http_response_code(400);
-    echo json_encode([
-        "success" => false,
-        "message" => "Datos incompletos"
-    ]);
+    echo "Datos incompletos";
 }

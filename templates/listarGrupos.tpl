@@ -20,9 +20,10 @@
         <td>{$g.Nivel}</td>
         <td>{$g.CicloEscolar}</td>
         <td>
-          <button class="btn btn-sm btn-primary editar-grupo" data-id="{$g.IdGrupo}">
-            Editar
-          </button>
+      <button class="btn btn-sm btn-primary editar-grupo" data-id="{$g.IdGrupo}">
+          Editar
+      </button>
+
           <button class="btn btn-sm btn-danger eliminar-grupo" data-id="{$g.IdGrupo}">
             Eliminar
           </button>

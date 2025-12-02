@@ -37,17 +37,6 @@
         </div>
     </div>
 
-    <!-- Materias -->
-    <div class="col-md-4">
-        <div class="card shadow-sm h-100 text-center">
-            <div class="card-body">
-                <i class="bi bi-book display-4 text-danger"></i>
-                <h5 class="card-title mt-3">Materias</h5>
-                <a href="materias.php" class="btn btn-outline-danger w-100 mt-3">Entrar</a>
-            </div>
-        </div>
-    </div>
-
     <!-- Exportar -->
     <div class="col-md-4">
         <div class="card shadow-sm h-100 text-center">

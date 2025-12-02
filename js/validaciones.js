@@ -157,7 +157,7 @@ $(document).ready(function () {
     });
   });
 
-  // Resetear validación al escribir/cambiar
+  // Resetear validación 
 $(document).on("input", "#NombreGrupo, #CicloEscolar", function () {
   borrarValidacionGrupo(this.id);
 });
@@ -184,11 +184,12 @@ function validarCamposEditarGrupo() {
   }
 
 
-  if ($("#edit_IdGrado").val().trim() === "" || isNaN($("#edit_IdGrado").val())) {
+  if ($("#edit_IdGrado").val() === "") {
     $("#edit_IdGrado").css("background-color", "red").focus();
     $("#error-edit_IdGrado").removeClass("d-none");
     valido = false;
   }
+
 
   const ciclo = $("#edit_CicloEscolar").val().trim();
   const regexCiclo = /^\d{4}-\d{4}$/;
@@ -212,17 +213,39 @@ function borrarValidacionGrupo(campoId) {
 
 $(document).on("click", ".editar-grupo", function () {
   const idGrupo = $(this).data("id");
-
+ console.log("ID del grupo a editar:", idGrupo);
   $.ajax({
     type: "POST",
     url: "../controladores/obtener_grupo.php",
     data: { IdGrupo: idGrupo },
+    dataType: "json",
+    beforeSend: function() {
+      console.log("Enviando solicitud AJAX para obtener datos del grupo...");
+    },
     success: function (respuesta) {
-      const grupo = JSON.parse(respuesta);
+      const grupo = respuesta.grupo;
+      const grados = respuesta.grados;
+      console.log("Datos recibidos para edición:", respuesta);
+      // Llenar campos del grupo
       $("#edit_IdGrupo").val(grupo.IdGrupo);
       $("#edit_NombreGrupo").val(grupo.NombreGrupo);
-      $("#edit_IdGrado").val(grupo.IdGrado);
       $("#edit_CicloEscolar").val(grupo.CicloEscolar);
+
+      // Llenar dinámicamente el select de grados
+      const selectGrado = $("#edit_IdGrado");
+      selectGrado.empty().append('<option value="">-- Selecciona un grado --</option>');
+      grados.forEach(g => {
+        selectGrado.append(`
+          <option value="${g.IdGrado}">
+            ${g.NombreGrado} - ${g.Nivel}
+          </option>
+        `);
+      });
+
+      // Seleccionar el grado actual del grupo
+      selectGrado.val(grupo.IdGrado);
+     console.log("Cargando datos del grupo para edición:", grupo);
+      // Mostrar modal
       $("#modalEditarGrupo").modal("show");
     },
     error: function () {
@@ -235,6 +258,7 @@ $(document).on("click", ".editar-grupo", function () {
     }
   });
 });
+
 
 $(document).on("submit", "#form_editar_grupo", function (e) {
   e.preventDefault();
@@ -275,9 +299,10 @@ $(document).on("input", "#edit_NombreGrupo, #edit_CicloEscolar", function () {
   borrarValidacionGrupo(this.id);
 });
 
-$(document).on("input", "#edit_IdGrado", function () {
+$(document).on("change", "#edit_IdGrado", function () {
   borrarValidacionGrupo(this.id);
 });
+
 
 
 
@@ -403,7 +428,7 @@ $(document).ready(function () {
     });
   });
 
-  // Limpieza visual al escribir o cambiar
+  // Resetear validación al escribir/cambiar
   $(document).on("input", "#Nombre, #Apellido, #CURP, #FechaNacimiento", function () {
     borrarValidacionAlumno(this.id);
   });

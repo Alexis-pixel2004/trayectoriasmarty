@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit;
+}
 require_once '../db/conexion.php';
 require_once '../clases/Alumno.php';
 
@@ -13,7 +17,5 @@ if ($idGrupo) {
     $alumnos = $alumnoModel->listarPorGrupo($idGrupo);
     echo json_encode($alumnos);
 } else {
-    http_response_code(400);
     echo json_encode(["error" => true, "message" => "Grupo no especificado"]);
 }
-

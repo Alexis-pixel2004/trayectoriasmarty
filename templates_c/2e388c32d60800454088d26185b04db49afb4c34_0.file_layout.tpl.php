@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.6.0, created on 2025-11-24 14:21:31
+/* Smarty version 5.6.0, created on 2025-12-02 14:42:15
   from 'file:layout.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.6.0',
-  'unifunc' => 'content_692469eba1f071_88777358',
+  'unifunc' => 'content_692efac7419454_72948084',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2e388c32d60800454088d26185b04db49afb4c34' => 
     array (
       0 => 'layout.tpl',
-      1 => 1763994082,
+      1 => 1764685013,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_692469eba1f071_88777358 (\Smarty\Template $_smarty_tpl) {
+function content_692efac7419454_72948084 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
@@ -49,23 +49,57 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 <body class="bg-light">
 
     <!-- Cabecera -->
-    <header class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm py-3">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-        
-        <!-- Logo y título -->
-        <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.php">
-            <i class="bi bi-mortarboard fs-4"></i>
-            <span>Sistema Académico</span>
-        </a>
 
+   <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm py-3">
+  <div class="container-fluid">
+    
+    <!-- Logo y título -->
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.php">
+      <i class="bi bi-mortarboard fs-4"></i>
+      <span>Sistema Académico</span>
+    </a>
+
+    <!-- Botón hamburguesa para móviles -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menú colapsable -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="menu.php">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registrar_grupo.php">Registrar Grupo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="alumnos.php">Alumnos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="listar_grupos.php">Grupos</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="exportarAlumnos.php">Exportar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-danger fw-bold" href="logout.php">
+            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+            </a>
+        </li>
+      </ul>
     </div>
-</header>
+  </div>
+</nav>
+
+
 
 
     <!-- Contenido principal -->
     <main class="container py-5">
         <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_581063546692469eba16854_61938050', "contenido");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_947980120692efac7418d49_22031712', "contenido");
 ?>
 
     </main>
@@ -84,7 +118,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_5810635466924
 </html>
 <?php }
 /* {block "contenido"} */
-class Block_581063546692469eba16854_61938050 extends \Smarty\Runtime\Block
+class Block_947980120692efac7418d49_22031712 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';

@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit;
+}
 require_once '../db/conexion.php';
 require_once '../clases/Grupo.php';
 
@@ -14,10 +18,10 @@ if ($idGrupo && $nombreGrupo && $idGrado && $ciclo) {
     if ($grupoModel->editar($idGrupo, $nombreGrupo, $idGrado, $ciclo)) {
         echo "Grupo actualizado correctamente";
     } else {
-        http_response_code(500);
+
         echo "Error al actualizar el grupo";
     }
 } else {
-    http_response_code(400);
+    
     echo "Datos incompletos";
 }

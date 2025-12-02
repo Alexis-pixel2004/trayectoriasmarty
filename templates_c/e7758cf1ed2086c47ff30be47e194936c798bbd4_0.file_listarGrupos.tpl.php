@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.6.0, created on 2025-11-24 14:06:53
+/* Smarty version 5.6.0, created on 2025-12-02 14:47:21
   from 'file:listarGrupos.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.6.0',
-  'unifunc' => 'content_6924667db74b44_17020717',
+  'unifunc' => 'content_692efbf9c6ca29_14089681',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7758cf1ed2086c47ff30be47e194936c798bbd4' => 
     array (
       0 => 'listarGrupos.tpl',
-      1 => 1763780048,
+      1 => 1764686814,
       2 => 'file',
     ),
   ),
@@ -21,18 +21,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
     'file:modalEditarGrupo.tpl' => 1,
   ),
 ))) {
-function content_6924667db74b44_17020717 (\Smarty\Template $_smarty_tpl) {
+function content_692efbf9c6ca29_14089681 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_10547244756924667dad8f23_28494120', "contenido");
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1353974793692efbf9c55983_09442372', "contenido");
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "layout.tpl", $_smarty_current_dir);
 }
 /* {block "contenido"} */
-class Block_10547244756924667dad8f23_28494120 extends \Smarty\Runtime\Block
+class Block_1353974793692efbf9c55983_09442372 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\laragon\\www\\trayectoria_smarty\\templates';
@@ -66,10 +66,11 @@ $foreach0DoElse = false;
         <td><?php echo $_smarty_tpl->getValue('g')['CicloEscolar'];?>
 </td>
         <td>
-          <button class="btn btn-sm btn-primary editar-grupo" data-id="<?php echo $_smarty_tpl->getValue('g')['IdGrupo'];?>
+      <button class="btn btn-sm btn-primary editar-grupo" data-id="<?php echo $_smarty_tpl->getValue('g')['IdGrupo'];?>
 ">
-            Editar
-          </button>
+          Editar
+      </button>
+
           <button class="btn btn-sm btn-danger eliminar-grupo" data-id="<?php echo $_smarty_tpl->getValue('g')['IdGrupo'];?>
 ">
             Eliminar

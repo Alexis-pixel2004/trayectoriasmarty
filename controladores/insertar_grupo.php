@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit;
+}
 
 echo "<pre>";
 print_r($_SESSION);
@@ -17,12 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idGrado     = $_POST['IdGrado'] ?? null;
     $ciclo       = trim($_POST['CicloEscolar'] ?? '');
     $idDocente   = $_SESSION['id_docente'] ?? null;
-   
-   
+
+
     if ($grupoModel->insertar($nombreGrupo, $idGrado, $ciclo, $idDocente)) {
         echo "Grupo registrado correctamente".$idDocente;
     } else {
-        http_response_code(500);
         echo "Error al registrar el grupo";
     }
 }

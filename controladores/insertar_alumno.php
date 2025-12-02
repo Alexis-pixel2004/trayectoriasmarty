@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit;
+}
 require_once '../db/conexion.php';
 require_once '../clases/Alumno.php';
 require_once '../clases/AsignacionAlumnoGrupo.php';
@@ -26,15 +30,14 @@ if ($nombre && $apellido && $sexo && $fecha && $curp && $idGrupo) {
         if ($asignacionModel->asignar($idAlumno, $idGrupo)) {
             echo "Alumno registrado y asignado correctamente";
         } else {
-            http_response_code(500);
+
             echo "Alumno registrado, pero error al asignar al grupo";
         }
     } else {
-        http_response_code(500);
+
         echo "Error al registrar alumno";
     }
 } else {
-    http_response_code(400);
+  
     echo "Datos incompletos";
 }
-
